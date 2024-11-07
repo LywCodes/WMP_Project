@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.WMP_Project" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.DINE" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.WMP_Project" parent="Base.Theme.WMP_Project" />
+    <style name="Theme.DINE" parent="Base.Theme.DINE" />
 </resources>

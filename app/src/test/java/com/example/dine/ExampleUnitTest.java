@@ -1,4 +1,4 @@
-package com.example.wmp_project;
+package com.example.dine;
 
 import org.junit.Test;
 

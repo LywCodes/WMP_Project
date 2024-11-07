@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashScreen">
+
+    <ImageView
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:src="@drawable/logo"
+        android:id="@+id/appLogo"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/splashtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/appLogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-20dp"
+        android:fontFamily="@font/satisfy"
+        android:text='"Your Best Partner for Cooking"'
+        android:textSize="25sp"
+        android:textStyle="bold" />
+</RelativeLayout>

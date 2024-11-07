@@ -19,6 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "WMP_Project"
-include(":app")
- 
+rootProject.name = "DINE"
+include ':app'
