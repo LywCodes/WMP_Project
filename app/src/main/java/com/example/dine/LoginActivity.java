@@ -1,5 +1,6 @@
 package com.example.dine;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -15,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 public class LoginActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);
             }
-
             @Override
             public void updateDrawState(TextPaint ds){
                 super.updateDrawState(ds);
@@ -38,9 +37,12 @@ public class LoginActivity extends AppCompatActivity {
                 ds.setUnderlineText(true);
             }
         };
-
         spannableString.setSpan(signUpClickableSpan, 23, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         signUpText.setText(spannableString);
         signUpText.setMovementMethod(LinkMovementMethod.getInstance());
+    }
+    @SuppressLint("MissingSuperCall")
+    @Override
+    public void onBackPressed(){
     }
 }
