@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="HardcodedText">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:title="Home"
+        />
+
+    <item
+        android:id="@+id/scanner"
+        android:icon="@drawable/scanner"
+        android:title="Scanner"
+        />
+    <item
+        android:id="@+id/recipe"
+        android:icon="@drawable/recipe"
+        android:title="Recipe"
+        />
+    <item
+        android:id="@+id/account"
+        android:icon="@drawable/account"
+        android:title="Account"
+        />
+</menu>
