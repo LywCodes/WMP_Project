@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "829349195544",
+    "project_id": "dine-829b3",
+    "storage_bucket": "dine-829b3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:829349195544:android:b5a8940a3dc1039f77b86d",
+        "android_client_info": {
+          "package_name": "com.example.dine"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKnXdRKAYL2mb9FvnlBb3z1LseTHJ5d80"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

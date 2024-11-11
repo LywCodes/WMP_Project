@@ -20,7 +20,7 @@
     <EditText
         android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:id="@+id/usernameField"
+        android:id="@+id/emailField"
         app:layout_constraintTop_toBottomOf="@+id/loginLogo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,13 +31,13 @@
         android:padding="10dp"
         android:drawableLeft="@drawable/user"
         android:drawablePadding="8dp"
-        android:hint="Username"/>
+        android:hint="Email"/>
 
     <EditText
         android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:id="@+id/passwordField"
-        app:layout_constraintTop_toBottomOf="@+id/usernameField"
+        app:layout_constraintTop_toBottomOf="@+id/emailField"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
@@ -72,5 +72,5 @@
         android:textSize="18dp"
         android:drawableRight="@drawable/food"
         android:backgroundTint="#73D76A"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,7 @@
         android:theme="@style/Theme.DINE"
         tools:targetApi="31">
         <activity
-            android:name=".navigation"
+            android:name=".NavigationActivity"
             android:exported="false" />
         <activity
             android:name=".SignUpActivity"
@@ -37,5 +37,5 @@
             android:name=".MainActivity"
             android:exported="false" />
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
