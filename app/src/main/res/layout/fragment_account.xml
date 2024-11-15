@@ -22,7 +22,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:text="History"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:fontFamily="@font/jakarta"
+            android:textStyle="bold"/>
     </LinearLayout>
 
     <LinearLayout
@@ -46,7 +48,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:text="Settings"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:fontFamily="@font/jakarta"
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
@@ -65,7 +69,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:text="Personal Information"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:fontFamily="@font/jakarta"
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
@@ -84,7 +90,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:text="Saved Recipes"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:fontFamily="@font/jakarta"
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
@@ -103,7 +111,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:text="Log Out"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:fontFamily="@font/jakarta"
+                android:textStyle="bold"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
