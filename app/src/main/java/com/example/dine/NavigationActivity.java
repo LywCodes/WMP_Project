@@ -21,6 +21,7 @@ public class NavigationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_navigation);
+        replaceFragment(new HomeFragment());
         binding = ActivityNavigationBinding.inflate(getLayoutInflater());
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -32,7 +33,7 @@ public class NavigationActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.home) {
-                
+                replaceFragment(new HomeFragment());
                 return true;
             } else if (itemId == R.id.scanner) {
                 // Handle scanner button click
