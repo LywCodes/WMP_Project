@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.dine.databinding.ActivityNavigationBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+
 public class NavigationActivity extends AppCompatActivity {
     private ActivityNavigationBinding binding;
     @Override
@@ -32,7 +33,7 @@ public class NavigationActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.home) {
-                
+
                 return true;
             } else if (itemId == R.id.scanner) {
                 // Handle scanner button click
