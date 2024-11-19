@@ -1,64 +1,90 @@
 package com.example.dine;
 
 import android.os.Bundle;
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.bumptech.glide.Glide;
+import com.example.dine.model.Ingredient;
+import com.example.dine.model.RecipeDetails;
+import com.example.dine.network.RetrofitClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link RecipeDetailsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class RecipeDetailsFragment extends Fragment {
+    private ImageView recipeImageView;
+    private TextView titleTextView;
+    private TextView descriptionTextView;
+    private TextView ingredientsTextView;
+    private TextView instructionsTextView;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public RecipeDetailsFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RecipeDetailsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static RecipeDetailsFragment newInstance(String param1, String param2) {
-        RecipeDetailsFragment fragment = new RecipeDetailsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_recipe_details, container, false);
+        // Initialize UI components
+        recipeImageView = view.findViewById(R.id.recipe_image);
+        titleTextView = view.findViewById(R.id.recipe_title);
+        descriptionTextView = view.findViewById(R.id.recipe_description);
+        ingredientsTextView = view.findViewById(R.id.recipe_ingredients);
+        instructionsTextView = view.findViewById(R.id.recipe_instructions);
+
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            int recipeId = getArguments().getInt("RECIPE_ID");
+            loadRecipeDetails(recipeId);
         }
+        return view;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recipe_details, container, false);
+    private void loadRecipeDetails(int recipeId) {
+        String apiKey = "9f2f420e7c8247819e2d80b0e2c4c463";
+        Call<RecipeDetails> call = RetrofitClient.getInstance().getSpoonacularApi().getRecipeDetails(recipeId, apiKey);
+        call.enqueue(new Callback<RecipeDetails>() {
+            @Override
+            public void onResponse(Call<RecipeDetails> call, Response<RecipeDetails> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    RecipeDetails recipe = response.body(); // Directly get the RecipeDetails
+                    displayRecipeDetails(recipe);
+                } else {
+                    Toast.makeText(getActivity(), "Recipe not found", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<RecipeDetails> call, Throwable t) {
+                Toast.makeText(getActivity(), "Failed to load recipe details", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void displayRecipeDetails(RecipeDetails recipe) {
+        titleTextView.setText(recipe.getTitle());
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            descriptionTextView.setText(Html.fromHtml(recipe.getSummary(), Html.FROM_HTML_MODE_LEGACY));
+        }
+        else {
+            descriptionTextView.setText(recipe.getSummary());
+        }
+        Glide.with(this)
+                .load(recipe.getImageUrl())
+                .into(recipeImageView);
+        StringBuilder ingredientsBuilder = new StringBuilder();
+        for (Ingredient ingredient : recipe.getIngredients()) {
+            ingredientsBuilder.append("- ").append(ingredient.getName()).append("\n");
+        }
+        ingredientsTextView.setText(ingredientsBuilder.toString());
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            instructionsTextView.setText(Html.fromHtml(recipe.getInstructions(), Html.FROM_HTML_MODE_LEGACY));
+        }
+        else {
+            instructionsTextView.setText(recipe.getInstructions());
+        }
     }
 }
