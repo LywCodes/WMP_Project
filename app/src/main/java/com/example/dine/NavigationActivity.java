@@ -27,6 +27,7 @@ import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
 
 import com.example.dine.databinding.ActivityNavigationBinding;
+import com.example.dine.model.Recipe;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.ByteArrayOutputStream;
@@ -58,8 +59,7 @@ public class NavigationActivity extends AppCompatActivity {
                 checkPermissions();
                 return true;
             } else if (itemId == R.id.recipe) {
-                // Handle recipe button click
-                return true;
+                replaceFragment(new RecipeFragment());
             } else if (itemId == R.id.account) {
                 replaceFragment(new AccountFragment());
                 return true;
