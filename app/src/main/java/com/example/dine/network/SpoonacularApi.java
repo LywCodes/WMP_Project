@@ -1,6 +1,7 @@
 package com.example.dine.network;
 
 import com.example.dine.model.Ingredient;
+import com.example.dine.model.Recipe;
 import com.example.dine.model.RecipeResponse;
 import com.example.dine.model.RecipeDetails;
 
@@ -24,6 +25,12 @@ public interface SpoonacularApi {
     @GET("recipes/{id}/information")
     Call<RecipeDetails> getRecipeDetails(
             @Path("id") int id,
+            @Query("apiKey") String apiKey
+    );
+
+    @GET("recipes/findByIngredients")
+    Call<List<Recipe>> findByIngredients(
+            @Query("ingredients") String ingredients,
             @Query("apiKey") String apiKey
     );
 

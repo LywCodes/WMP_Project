@@ -60,6 +60,7 @@ public class NavigationActivity extends AppCompatActivity {
                 return true;
             } else if (itemId == R.id.recipe) {
                 replaceFragment(new RecipeFragment());
+                return true;
             } else if (itemId == R.id.account) {
                 replaceFragment(new AccountFragment());
                 return true;
