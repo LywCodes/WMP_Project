@@ -1,6 +1,5 @@
 package com.example.dine;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,7 +18,6 @@ import com.example.dine.model.Recipe;
 import com.example.dine.network.RetrofitClient;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -47,13 +45,6 @@ public class RecipeFragment extends Fragment {
 
         searchResults = new ArrayList<>();
         cartItems = new ArrayList<>();
-
-        // Retrieve ingredients from SharedPreferences
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext());
-        String ingredients = sharedPreferences.getString("ingredients", ""); // Default to empty string if not found
-        if (!ingredients.isEmpty()) {
-            cartItems.addAll(Arrays.asList(ingredients.split(", "))); // Split and add to cartItems
-        }
 
         // Use custom adapter for search results
         searchAdapter = new SearchItemAdapter(requireContext(), searchResults, this);
@@ -83,7 +74,6 @@ public class RecipeFragment extends Fragment {
 
         // Listen to cart item changes (for recipe search)
         view.findViewById(R.id.btnSearchMenu).setOnClickListener(v -> searchRecipesBasedOnCartItems());
-
         return view;
     }
 

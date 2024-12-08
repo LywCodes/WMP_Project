@@ -2,7 +2,6 @@ package com.example.dine;
 
 import android.Manifest;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -22,14 +21,15 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import android.preference.PreferenceManager;
 
 import com.chaquo.python.PyObject;
 import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
+
 import com.example.dine.databinding.ActivityNavigationBinding;
 import com.example.dine.model.Recipe;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.io.ByteArrayOutputStream;
 
 public class NavigationActivity extends AppCompatActivity {
@@ -92,7 +92,6 @@ public class NavigationActivity extends AppCompatActivity {
         startActivityForResult(cameraIntent, REQUEST_CODE);
     }
 
-
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
             Bitmap picTaken = (Bitmap) data.getExtras().get("data");
@@ -112,19 +111,9 @@ public class NavigationActivity extends AppCompatActivity {
 
             // Pass the byte array and API token to the Python function
             PyObject result = foodDetectionModule.callAttr("detect_food_bytes", imageBytes, apiUserToken);
-
-            // Convert the result to a String (if it isn't already)
-            String ingredients = result.toString();
-
-            // Store the result in SharedPreferences
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("ingredients", ingredients);
-            editor.apply();
-
-            Toast.makeText(this, "Ingredients saved successfully!", Toast.LENGTH_SHORT).show();
+            System.out.println(result.toString());
         } else {
-            Toast.makeText(this, "Camera Canceled", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Camera Canceled",Toast.LENGTH_SHORT).show();
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
