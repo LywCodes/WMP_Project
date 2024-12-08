@@ -51,9 +51,17 @@ public class RecipeFragment extends Fragment {
         // Retrieve ingredients from SharedPreferences
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext());
         String ingredients = sharedPreferences.getString("ingredients", ""); // Default to empty string if not found
+
         if (!ingredients.isEmpty()) {
-            cartItems.addAll(Arrays.asList(ingredients.split(", "))); // Split and add to cartItems
+            // Clean the ingredients string to remove brackets and quotes
+            ingredients = ingredients.replace("[", "")
+                    .replace("]", "")
+                    .replace("'", "");
+
+            // Split the cleaned string and add to cartItems
+            cartItems.addAll(Arrays.asList(ingredients.split(" "))); // Split by space
         }
+
 
         // Use custom adapter for search results
         searchAdapter = new SearchItemAdapter(requireContext(), searchResults, this);

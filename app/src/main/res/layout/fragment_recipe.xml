@@ -43,10 +43,11 @@
     <ListView
         android:id="@+id/cartListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="225dp"
         android:layout_below="@id/cart_label"
         android:divider="@android:color/darker_gray"
         android:dividerHeight="1dp"
+        android:scrollbars="vertical"
         app:layout_constraintTop_toBottomOf="@id/cart_label"
         />
 

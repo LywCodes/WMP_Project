@@ -105,7 +105,7 @@ public class NavigationActivity extends AppCompatActivity {
             picTaken.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
             byte[] imageBytes = byteArrayOutputStream.toByteArray();
 
-            String apiUserToken = "363b6a09a25805f5c4f85de082d578974972dbc7";  // Update with actual token
+            String apiUserToken = "3ca489492045eb67aa3dd4fdbe809498931b02e4";  // Update with actual token
 
             Python python = Python.getInstance();
             PyObject foodDetectionModule = python.getModule("food_detection");
@@ -121,7 +121,10 @@ public class NavigationActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("ingredients", ingredients);
             editor.apply();
-
+            Fragment recipeFragment = new RecipeFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, recipeFragment)
+                    .commit();
             Toast.makeText(this, "Ingredients saved successfully!", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Camera Canceled", Toast.LENGTH_SHORT).show();
