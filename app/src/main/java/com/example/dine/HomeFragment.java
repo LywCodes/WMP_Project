@@ -57,7 +57,7 @@ public class HomeFragment extends Fragment implements SensorEventListener {
 
     private void loadRecipes() {
         String apiKey = "9f2f420e7c8247819e2d80b0e2c4c463";
-        Call<RecipeResponse> call = RetrofitClient.getInstance().getSpoonacularApi().getRandomRecipes(apiKey, 9);
+        Call<RecipeResponse> call = RetrofitClient.getInstance().getSpoonacularApi().getRandomRecipes(apiKey, 1);
         call.enqueue(new Callback<RecipeResponse>() {
             @Override
             public void onResponse(Call<RecipeResponse> call, Response<RecipeResponse> response) {
